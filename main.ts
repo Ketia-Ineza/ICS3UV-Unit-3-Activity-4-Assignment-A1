@@ -30,6 +30,11 @@ if (orderOk) {
   console.log("Order is OK.");
 }
 
-// Total cost
-const totalCost = (bolts * BOLT_COST) + (bolts * NUT_COST) + (washers * WASHER_COST);
-console.log("Your total cost of the order is 175 cents.");
+// Total cost calculation
+// Charge enough nuts and washers to match bolts if needed
+const chargeNuts = nuts < bolts ? bolts : nuts;
+const chargeWashers = washers < bolts ? bolts : washers;
+const totalCost = (bolts * BOLT_COST) + (chargeNuts * NUT_COST) + (chargeWashers * WASHER_COST);
+
+// Print total dynamically
+console.log("Your total cost of the order is " + totalCost + " cents."); 
